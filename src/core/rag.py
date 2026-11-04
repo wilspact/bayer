@@ -10,7 +10,11 @@ class ProductKnowledgeRetriever:
         Initializes the retriever and loads the product knowledge JSON files.
         """
         if json_paths is None:
-            json_paths = ["product_manual_rag_knowledge.json", "dosage_rag_knowledge.json"]
+            base_dir = Path(__file__).resolve().parent.parent.parent
+            json_paths = [
+                base_dir / "product_manual_rag_knowledge.json",
+                base_dir / "dosage_rag_knowledge.json"
+            ]
             
         self.chunks = []
         for path in json_paths:
